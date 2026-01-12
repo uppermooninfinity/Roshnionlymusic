@@ -15,7 +15,8 @@ API_HASH = getenv("API_HASH", "d818b8d530e4a9b209509815ab1b9c7c")
 BOT_TOKEN = getenv("BOT_TOKEN","")
 
 # OpenAI Token
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+YOUTUBE_API_KEY= getenv("API KEY", "")
 
 # Get your mongo url from cloud.mongodb.com
 MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://knight4563:knight4563@cluster0.a5br0se.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
