@@ -34,7 +34,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             await message.reply_sticker(
-                    "CAACAgUAAxkBAAEQCTBpRKJI2Ne-52UqZaInTPq2H8X7sQACvRYAAqlp8VXvMdDN80vQvDYE"
+                    "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
              )
             return await message.reply_photo(
                 photo=config.START_IMG_URL,
@@ -89,7 +89,7 @@ async def start_pm(client, message: Message, _):
     else:
         out = private_panel(_)
         await message.reply_sticker(
-            "CAACAgUAAxkBAAEQCTBpRKJI2Ne-52UqZaInTPq2H8X7sQACvRYAAqlp8VXvMdDN80vQvDYE"
+            "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
         )
         await message.reply_photo(
             photo=config.START_IMG_URL,
