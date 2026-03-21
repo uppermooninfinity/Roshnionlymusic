@@ -1,12 +1,14 @@
 import time
+import asyncio
+import random
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from youtubesearchpython.__future__ import VideosSearch
 
 import config
-from config import BANNED_USERS, START_IMG_URL
+from config import BANNED_USERS
 from Oneforall import app
 from Oneforall.misc import _boot_
 from Oneforall.plugins.sudo.sudoers import sudoers_list
@@ -24,20 +26,113 @@ from Oneforall.utils.inline import help_pannel, private_panel, start_panel
 from strings import get_string
 from Oneforall.misc import SUDOERS
 
+
+# ==============================
+# 🔒 FORCE SUB CHANNELS
+# ==============================
+
+FORCE_CHANNEL_1 = config.FORCE_CHANNEL_1
+FORCE_CHANNEL_2 = config.FORCE_CHANNEL_2
+
+NEXT_IMG = [
+    "https://graph.org/file/d22cec7c75e26f36edff7-0ce8cae0037d4aa0aa.jpg",
+    "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
+]
+
+STICKER = [
+    "CAACAgUAAxkBAAEQEGVpSR-TuCKHP8D69SvDAAH2Gn7QjXEAAtIEAAKP9uhXzLPwoqMKxuQ2BA",
+    "CAACAgUAAxkBAAEQEGVpSR-TuCKHP8D69SvDAAH2Gn7QjXEAAtIEAAKP9uhXzLPwoqMKxuQ2BA",
+    "CAACAgUAAxkBAAEQEGVpSR-TuCKHP8D69SvDAAH2Gn7QjXEAAtIEAAKP9uhXzLPwoqMKxuQ2BA",
+]
+
+EMOJIOS = ["🚩", "🥀", "🪄", "🩷", "⚡", "❤️‍🩹", "🩶", "🩵", "💜", "🕊"]
+
+
+# ==============================
+# PRIVATE FORCE SUB CHECK
+# ==============================
+
+async def force_sub_private(message: Message):
+    try:
+        user_id = message.from_user.id
+
+        member1 = await app.get_chat_member(f"@{FORCE_CHANNEL_1}", user_id)
+        member2 = await app.get_chat_member(f"@{FORCE_CHANNEL_2}", user_id)
+
+        if member1.status in ["left", "kicked"] or member2.status in ["left", "kicked"]:
+
+            buttons = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "📢 Join Channel 1",
+                            url=f"https://t.me/{FORCE_CHANNEL_1}"
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "📢 Join Channel 2",
+                            url=f"https://t.me/{FORCE_CHANNEL_2}"
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "✅ I Have Joined",
+                            callback_data="check_sub"
+                        )
+                    ]
+                ]
+            )
+
+            await message.reply_photo(
+                photo=config.START_IMG_URL,
+                caption="🔒 **Access Denied!**\n\nYou must join both channels to use this bot.",
+                reply_markup=buttons
+            )
+
+            return True
+
+    except Exception as e:
+        print(e)
+
+    return False
+
+
+# ==============================
+# PRIVATE START
+# ==============================
+
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
+
+    # 🔒 Force Join only here (PRIVATE)
+    if await force_sub_private(message):
+        return
+
     await add_served_user(message.from_user.id)
-    await message.react("❤")
+    await message.react("🍓")
+     
+    accha = await message.reply_text(text=random.choice(EMOJIOS))
+    await asyncio.sleep(1.3)
+    await accha.edit("🔊 ᴘʟєᴧꜱє ᴡᴧɪᴛ... ʟєᴛ ᴛʜє ᴠɪʙєꜱ ʙєɢɪη 💫")
+    await asyncio.sleep(0.2)
+    await accha.edit("🎶✨ snowy ϻᴜꜱɪᴄ ꜱᴛᴧʀᴛɪηɢ ✨🎶")
+    await asyncio.sleep(0.2)
+    await accha.edit("__.ʜєʟʟσ ʜσω ᴧʀє ʏσᴜ 🩷 .__")
+    await asyncio.sleep(0.2)
+    await accha.delete()
+
+    umm = await message.reply_sticker(sticker=random.choice(STICKER))
+    await asyncio.sleep(2)
+    await umm.delete()
+
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = help_pannel(_)
-            await message.reply_sticker(
-                    "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
-             )
             return await message.reply_photo(
-                photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
+                random.choice(NEXT_IMG),
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
             )
@@ -69,7 +164,7 @@ async def start_pm(client, message: Message, _):
             key = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text=_["S_B_8"], url=link),
+                        InlineKeyboardButton(text="˹ ɪɴꜰɪɴɪᴛʏ ✘ ɴᴇᴛᴡᴏʀᴋ˼ 🎧", url="https://t.me/dark_musictm"),
                         InlineKeyboardButton(text=_["S_B_9"], url=config.SUPPORT_CHAT),
                     ],
                 ]
@@ -88,13 +183,11 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
-        await message.reply_sticker(
-            "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
-        )
         await message.reply_photo(
-            photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
+            random.choice(NEXT_IMG),
             caption=_["start_2"].format(message.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(out),
+            has_spoiler=True,
         )
         if await is_on_off(2):
             return await app.send_message(
@@ -103,113 +196,37 @@ async def start_pm(client, message: Message, _):
             )
 
 
+# ==============================
+# FORCE JOIN CALLBACK
+# ==============================
+
+@app.on_callback_query(filters.regex("check_sub"))
+async def check_subscription(client, callback_query: CallbackQuery):
+
+    user_id = callback_query.from_user.id
+
+    member1 = await app.get_chat_member(f"@{FORCE_CHANNEL_1}", user_id)
+    member2 = await app.get_chat_member(f"@{FORCE_CHANNEL_2}", user_id)
+
+    if member1.status not in ["left", "kicked"] and member2.status not in ["left", "kicked"]:
+        await callback_query.message.delete()
+        await callback_query.message.reply_text("✅ Subscription Verified!\n\nNow send /start again.")
+    else:
+        await callback_query.answer("❌ You have not joined both channels!", show_alert=True)
+
+
+# ==============================
+# GROUP START (UNCHANGED)
+# ==============================
+
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
     await message.reply_photo(
-        photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
+        photo=config.START_IMG_URL,
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
     return await add_served_chat(message.chat.id)
-
-welcome_group = 2
-
-@app.on_message(filters.new_chat_members, group=welcome_group)
-async def welcome(client, message: Message):
-    try:
-        chat_id = message.chat.id
-        for member in message.new_chat_members:
-            buttons = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text=member.first_name,  
-                            user_id=member.id        
-                        )
-                    ]
-                ]
-            )
-
-            if isinstance(config.OWNER_ID, int): 
-                if member.id == config.OWNER_ID:
-                    owner = f"<blockquote><i><u>❍{member.mention}ᴛʜє ᴄᴏᴅєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴊσɪηєᴅ ᴛʜє ᴄʜᴧᴛ ..\n⌯ ᴅσ ϻᴧɪηᴛᴧɪη ᴛʜє ᴄʜᴧᴛ σʀ ʙє ʀєᴧᴅʏ ᴛσ ғᴧᴄє ᴛʜє\n 🌷ᴊσɪη ᴛʜє sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs </u></i></blockquote>"
-                    sent_message = await message.reply_text(owner, reply_markup=buttons)
-                    await asyncio.sleep(20) 
-                    await sent_message.delete()  
-                    return
-
-            elif isinstance(config.OWNER_ID, (list, set)): 
-                if member.id in config.OWNER_ID:
-                    owner = f"<blockquote><i><u>❍{member.mention}ᴛʜє ᴄᴏᴅєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴊσɪηєᴅ ᴛʜє ᴄʜᴧᴛ ..\n⌯ ᴅσ ϻᴧɪηᴛᴧɪη ᴛʜє ᴄʜᴧᴛ σʀ ʙє ʀєᴧᴅʏ ᴛσ ғᴧᴄє ᴛʜє\n 🌷ᴊσɪη ᴛʜє sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs </u></i></blockquote>"
-                    sent_message = await message.reply_text(owner, reply_markup=buttons)
-                    await asyncio.sleep(60)
-                    await sent_message.delete()  
-                    return
-
-            if isinstance(SUDOERS, int): 
-                if member.id == SUDOERS:
-                    AMBOT = f"<blockquote><i><u>⌯{member.mention} sᴜᴅσ ᴜsєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴇηᴛєʀєᴅ ᴛʜє ᴄʜᴧᴛ ..\n✦ ᴘʟєᴧsє ᴋєєᴘ ᴛʜє ᴄʜᴧᴛ ᴄʟєᴧη ᴧηᴅ ғσʟʟσᴡ ᴛʜє ʀᴜʟєs\n❍ ϻɪsᴜsє σʀ sᴘᴧϻ ϻᴧʏ ʀєsᴜʟᴛ ɪη ᴧᴄᴛɪση\n🌷 ᴊσɪη ᴛʜє <a href='https://t.me/snowy_hometown'>sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs</u></i></blockquote>"
-                    sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
-                    await asyncio.sleep(60)
-                    await sent_message.delete()  
-                    return
-
-            elif isinstance(SUDOERS, (list, set)):
-                if member.id in SUDOERS:
-                    AMBOT = f"<blockquote><i><u>⌯{member.mention} sᴜᴅσ ᴜsєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴇηᴛєʀєᴅ ᴛʜє ᴄʜᴧᴛ ..\n✦ ᴘʟєᴧsє ᴋєєᴘ ᴛʜє ᴄʜᴧᴛ ᴄʟєᴧη ᴧηᴅ ғσʟʟσᴡ ᴛʜє ʀᴜʟєs\n❍ ϻɪsᴜsє σʀ sᴘᴧϻ ϻᴧʏ ʀєsᴜʟᴛ ɪη ᴧᴄᴛɪση\n🌷 ᴊσɪη ᴛʜє <a href='https://t.me/snowy_hometown'>sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs</u></i></blockquote>"
-                    sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
-                    await asyncio.sleep(60)
-                    await sent_message.delete()  
-                    return
-
-        return
-    except Exception as e:
-        print(f"Error in welcome handler: {e}")
-        return
-
-
-
-@app.on_message(filters.new_chat_members, group=-1)
-async def welcome(client, message: Message):
-    for member in message.new_chat_members:
-        try:
-            language = await get_lang(message.chat.id)
-            _ = get_string(language)
-            if await is_banned_user(member.id):
-                try:
-                    await message.chat.ban_member(member.id)
-                except:
-                    pass
-            if member.id == app.id:
-                if message.chat.type != ChatType.SUPERGROUP:
-                    await message.reply_text(_["start_4"])
-                    return await app.leave_chat(message.chat.id)
-                if message.chat.id in await blacklisted_chats():
-                    await message.reply_text(
-                        _["start_5"].format(
-                            app.mention,
-                            f"https://t.me/{app.username}?start=sudolist",
-                            config.SUPPORT_CHAT,
-                        ),
-                        disable_web_page_preview=True,
-                    )
-                    return await app.leave_chat(message.chat.id)
-
-                out = start_panel(_)
-                await message.reply_photo(
-                    photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
-                    caption=_["start_3"].format(
-                        message.from_user.first_name,
-                        app.mention,
-                        message.chat.title,
-                        app.mention,
-                    ),
-                    reply_markup=InlineKeyboardMarkup(out),
-                )
-                await add_served_chat(message.chat.id)
-                await message.stop_propagation()
-        except Exception as ex:
-            print(ex)
