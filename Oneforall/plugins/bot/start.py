@@ -37,7 +37,7 @@ async def start_pm(client, message: Message, _):
                     "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
              )
             return await message.reply_photo(
-                photo=config.START_IMG_URL,
+                photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
             )
@@ -92,7 +92,7 @@ async def start_pm(client, message: Message, _):
             "CAACAgUAAxkBAAEQOp1pZVnKhv3-iXkamVfZ-FfL2MXwAwAClBsAAqXUeVQJbI1U6N2QQDgE"
         )
         await message.reply_photo(
-            photo=config.START_IMG_URL,
+            photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
             caption=_["start_2"].format(message.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -109,7 +109,7 @@ async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
     await message.reply_photo(
-        photo=config.START_IMG_URL,
+        photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -135,7 +135,7 @@ async def welcome(client, message: Message):
 
             if isinstance(config.OWNER_ID, int): 
                 if member.id == config.OWNER_ID:
-                    owner = f"#BOT_OWNER\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n{member.mention} 𝙊𝙬𝙣𝙚𝙧 𝗢𝗳 {app.mention} 𝙟𝙪𝙨𝙩 𝙟𝙤𝙞𝙣𝙚𝙙 𝙩𝙝𝙚 𝙜𝙧𝙤𝙪𝙥 <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Buyer_infinity \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Destiny_Infinity_Og \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Bots_Are_Alive \n┣★ 𝗕𝗼𝘁 𝗨𝘀𝗲𝗿𝗡𝗮𝗺𝗲 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗯𝗮𝗻 𝗟𝗼𝗴𝘀 -: @who_cares_qt \n┣★ ᴘᴏꜱɪᴛɪᴠɪᴛʏ ᴋɪ ᴅᴜɴɪʏᴀ -: @positive_thinking135 \n┣★ ᴘᴏꜱɪᴛɪᴠɪᴛʏ ᴋɪ ᴅᴜɴɪʏᴀ 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code>/@Destiny_Infinity_Og  </code>\n┣★ 𝙉𝙤𝙩𝙚  -: 𝗧𝗵𝗶𝘀 𝗜𝘀 𝗢𝗻𝗹𝘆 𝗙𝗼𝗿 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗙𝗼𝗿 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 {member.mention}."
+                    owner = f"<blockquote><i><u>❍{member.mention}ᴛʜє ᴄᴏᴅєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴊσɪηєᴅ ᴛʜє ᴄʜᴧᴛ ..\n⌯ ᴅσ ϻᴧɪηᴛᴧɪη ᴛʜє ᴄʜᴧᴛ σʀ ʙє ʀєᴧᴅʏ ᴛσ ғᴧᴄє ᴛʜє\n 🌷ᴊσɪη ᴛʜє sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs </u></i></blockquote>"
                     sent_message = await message.reply_text(owner, reply_markup=buttons)
                     await asyncio.sleep(20) 
                     await sent_message.delete()  
@@ -143,7 +143,7 @@ async def welcome(client, message: Message):
 
             elif isinstance(config.OWNER_ID, (list, set)): 
                 if member.id in config.OWNER_ID:
-                    owner = f"#BOT_OWNER\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n{member.mention} 𝙊𝙬𝙣𝙚𝙧 𝗢𝗳 {app.mention} 𝙟𝙪𝙨𝙩 𝙟𝙤𝙞𝙣𝙚𝙙 𝙩𝙝𝙚 𝙜𝙧𝙤𝙪𝙥 <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Buyer_infinity  \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @@Destiny_Infinity_Og \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Bots_Are_Alive \n┣★ 𝗕𝗼𝘁 𝗨𝘀𝗲𝗿𝗡𝗮𝗺𝗲 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗯𝗮𝗻 𝗟𝗼𝗴𝘀 -: @@who_cares_qt\n┣★ 𝙒𝙝𝙤 𝙘𝙖𝙧𝙚𝙨 𝙗𝙖𝙗𝙮 -: @positive_thinking135\n┣★ ᴘᴏꜱɪᴛɪᴠɪᴛʏ ᴋɪ ᴅᴜɴɪʏᴀ 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> </code>\n┣★ 𝙉𝙤𝙩𝙚  -: 𝗧𝗵𝗶𝘀 𝗜𝘀 𝗢𝗻𝗹𝘆 𝗙𝗼𝗿 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗙𝗼𝗿 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 {member.mention}."
+                    owner = f"<blockquote><i><u>❍{member.mention}ᴛʜє ᴄᴏᴅєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴊσɪηєᴅ ᴛʜє ᴄʜᴧᴛ ..\n⌯ ᴅσ ϻᴧɪηᴛᴧɪη ᴛʜє ᴄʜᴧᴛ σʀ ʙє ʀєᴧᴅʏ ᴛσ ғᴧᴄє ᴛʜє\n 🌷ᴊσɪη ᴛʜє sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs </u></i></blockquote>"
                     sent_message = await message.reply_text(owner, reply_markup=buttons)
                     await asyncio.sleep(60)
                     await sent_message.delete()  
@@ -151,7 +151,7 @@ async def welcome(client, message: Message):
 
             if isinstance(SUDOERS, int): 
                 if member.id == SUDOERS:
-                    AMBOT = f"#Sudo_User\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n𝗢𝗙 {app.mention} 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 {member.mention} just joined the group <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Buyer_infinity  \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Destiny_Infinity_Og \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Bots_Are_Alive \n┣★ 𝗕𝗼𝘁 𝗨𝗦𝗘𝗥𝗡𝗔𝗠𝗘 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗯𝗮𝗻 𝗟𝗼𝗴𝘀 -: @who_cares_qt\n┣★ 𝙒𝙝𝙤 𝙘𝙖𝙧𝙚𝙨 𝙗𝙖𝙗𝙮 -: @positive_thinking135\n┣★ ᴘᴏꜱɪᴛɪᴠɪᴛʏ ᴋɪ ᴅᴜɴɪʏᴀ 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> </code>."
+                    AMBOT = f"<blockquote><i><u>⌯{member.mention} sᴜᴅσ ᴜsєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴇηᴛєʀєᴅ ᴛʜє ᴄʜᴧᴛ ..\n✦ ᴘʟєᴧsє ᴋєєᴘ ᴛʜє ᴄʜᴧᴛ ᴄʟєᴧη ᴧηᴅ ғσʟʟσᴡ ᴛʜє ʀᴜʟєs\n❍ ϻɪsᴜsє σʀ sᴘᴧϻ ϻᴧʏ ʀєsᴜʟᴛ ɪη ᴧᴄᴛɪση\n🌷 ᴊσɪη ᴛʜє <a href='https://t.me/snowy_hometown'>sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs</u></i></blockquote>"
                     sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
                     await asyncio.sleep(60)
                     await sent_message.delete()  
@@ -159,7 +159,7 @@ async def welcome(client, message: Message):
 
             elif isinstance(SUDOERS, (list, set)):
                 if member.id in SUDOERS:
-                    AMBOT = f"#Sudo_User\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n𝗢𝗙 {app.mention} 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 {member.mention} just joined the group <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗘𝗥𝗘 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Destiny_Infinity_Og  \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -:  \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Bots_Are_Alive \n┣★ 𝗕𝗢𝗧 𝗨𝗦𝗘𝗥𝗡𝗔𝗠𝗘 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗕𝗮𝗻 𝗟𝗢𝗚𝗦 -: A\n┣★ Infinity_bots -: @positive_thinking135\n┣★ 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code></code>."
+                    AMBOT = f"<blockquote><i><u>⌯{member.mention} sᴜᴅσ ᴜsєʀ σғ ᴛʜє ʙᴏᴛ ʜᴧs ᴇηᴛєʀєᴅ ᴛʜє ᴄʜᴧᴛ ..\n✦ ᴘʟєᴧsє ᴋєєᴘ ᴛʜє ᴄʜᴧᴛ ᴄʟєᴧη ᴧηᴅ ғσʟʟσᴡ ᴛʜє ʀᴜʟєs\n❍ ϻɪsᴜsє σʀ sᴘᴧϻ ϻᴧʏ ʀєsᴜʟᴛ ɪη ᴧᴄᴛɪση\n🌷 ᴊσɪη ᴛʜє <a href='https://t.me/snowy_hometown'>sᴜᴘᴘσʀᴛ ᴄʜᴧᴛ</a> ғσʀ ϻσʀє ɪηғσ ᴧηᴅ <a href='https://t.me/astral_superbans'>sᴜᴘєʀʙᴧη ʟσɢs</a> ғσʀ ᴄʜєᴄᴋɪηɢ sᴜᴘєʀʙᴧηs</u></i></blockquote>"
                     sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
                     await asyncio.sleep(60)
                     await sent_message.delete()  
@@ -200,7 +200,7 @@ async def welcome(client, message: Message):
 
                 out = start_panel(_)
                 await message.reply_photo(
-                    photo=config.START_IMG_URL,
+                    photo="https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg",
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
