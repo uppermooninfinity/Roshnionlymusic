@@ -96,18 +96,18 @@ autoclean = []
 confirmer = {}
 
 
-START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg")
-PING_IMG_URL = getenv("PING_IMG_URL", "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg")
-PLAYLIST_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-STATS_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-TELEGRAM_AUDIO_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-TELEGRAM_VIDEO_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-STREAM_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-SOUNCLOUD_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-YOUTUBE_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/7c703f3d157b477bd5879-4463312df2304b779f.jpg"
+START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg")
+PING_IMG_URL = getenv("PING_IMG_URL", "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg")
+PLAYLIST_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+STATS_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+TELEGRAM_AUDIO_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+TELEGRAM_VIDEO_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+STREAM_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+SOUNCLOUD_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+YOUTUBE_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
  
 THUMB_VID_URL = "https://files.catbox.moe/u67qpv.mp4"
 
