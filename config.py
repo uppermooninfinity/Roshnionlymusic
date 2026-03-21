@@ -108,7 +108,8 @@ YOUTUBE_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e652
 SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
 SPOTIFY_ALBUM_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://graph.org/file/c53dfca85e9e0b5bc9cd1-afa1339cd5d4e6522c.jpg"
- 
+
+STYLE_ENTRY_IMG_URL = "https://graph.org/file/f2855b038d8106a1cbefd-e2918025e8249f29d2.jpg"
 THUMB_VID_URL = "https://files.catbox.moe/u67qpv.mp4"
 
 def time_to_seconds(time):
