@@ -11,6 +11,9 @@ load_dotenv()
 API_ID = int(getenv("API_ID", "34594672"))
 API_HASH = getenv("API_HASH", "a008e5018b8662e872be5a8670db4840")
 
+FORCE_CHANNEL_1 = os.getenv("FORCE_CHANNEL_1", "https://t.me/dark_musictm")
+FORCE_CHANNEL_2 = os.getenv("FORCE_CHANNEL_2", "https://t.me/docker_git_bit")
+
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN","")
 
