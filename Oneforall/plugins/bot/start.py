@@ -184,7 +184,7 @@ async def start_pm(client, message: Message, _):
     else:
         out = private_panel(_)
         await message.reply_text(
-            caption=_["start_2"].format(message.from_user.mention, app.mention),
+            text=_["start_2"].format(message.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(2):
