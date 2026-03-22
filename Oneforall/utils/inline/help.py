@@ -5,6 +5,7 @@ from pyrogram.enums import ButtonStyle
 
 from Oneforall import app
 
+def help_pannel(_, START: Union[bool, int] = None):
     first = [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")]
     second = [
         InlineKeyboardButton(
