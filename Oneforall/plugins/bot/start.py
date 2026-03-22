@@ -183,11 +183,9 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
-        await message.reply_photo(
-            random.choice(NEXT_IMG),
+        await message.reply_text(
             caption=_["start_2"].format(message.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(out),
-            has_spoiler=True,
         )
         if await is_on_off(2):
             return await app.send_message(
