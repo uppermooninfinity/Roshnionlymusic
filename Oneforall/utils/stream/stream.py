@@ -7,6 +7,7 @@ from pyrogram.types import InlineKeyboardMarkup
 import config
 from Oneforall import YouTube, app
 from Oneforall.core.call import Hotty
+from Oneforall.utils.thumbnails import gen_thumb
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
@@ -445,27 +446,9 @@ async def stream(
             db[chat_id][0]["markup"] = "tg"
             await mystic.delete()
 
-
-# Function to get thumbnail by video ID
+#chutiya code remove krke new code fixed dal diya
 async def get_thumb(videoid):
     try:
-        # Search for the video using video ID
-        query = f"https://www.youtube.com/watch?v={videoid}"
-        results = VideosSearch(query, limit=1)
-        for result in (await results.next())["result"]:
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        return thumbnail
-    except Exception as e:
-        return config.YOUTUBE_IMG_URL
-
-
-async def get_thumb(vidid):
-    try:
-        # Search for the video using video ID
-        query = f"https://www.youtube.com/watch?v={vidid}"
-        results = VideosSearch(query, limit=1)
-        for result in (await results.next())["result"]:
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        return thumbnail
-    except Exception as e:
+        return await gen_thumb(videoid)
+    except Exception:
         return config.YOUTUBE_IMG_URL
