@@ -30,7 +30,7 @@ from Oneforall.utils.exceptions import AssistantErr
 from Oneforall.utils.formatters import check_duration, seconds_to_min, speed_converter
 from Oneforall.utils.inline.play import stream_markup, stream_markup2
 from Oneforall.utils.stream.autoclear import auto_clean
-from Oneforall.utils.thumbnails import gen_thumb
+from Oneforall.utils.thumbnails import get_thumb
 from strings import get_string
 
 async def delete_old_message(chat_id: int):
@@ -420,7 +420,7 @@ class Call(PyTgCalls):
                         original_chat_id,
                         text=_["call_6"],
                     )
-                img = await gen_thumb(videoid)
+                img = await get_thumb(videoid)
                 button = stream_markup2(_, chat_id)
                 run = await app.send_photo(
                     chat_id=original_chat_id,
