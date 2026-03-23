@@ -449,6 +449,6 @@ async def stream(
 #chutiya code remove krke new code fixed dal diya
 async def get_thumb(videoid):
     try:
-        return await gen_thumb(videoid)
+        return await get_thumb(videoid)
     except Exception:
         return config.YOUTUBE_IMG_URL
